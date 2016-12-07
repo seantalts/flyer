@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var updatingLocation = false
     @IBOutlet weak var _mapView: MKMapView!
     var journey = [Place]()
-    var journeyIdx = 0
+    var journeyIdx = -1
     var currentLocation : CLLocation?
     let locationManager = CLLocationManager()
     
@@ -24,20 +24,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.setupLocation()
         
-        Alamofire.request("https://maps.googleapis.com/maps/api/directions/json?mode=walking&origin=40.775535,-73.961310&destination=40.729612,-73.988141&waypoints=via:40.729324,-73.981329&key=AIzaSyBrQyRpA3v1gZCznfUvcjSZFG5r_KnrnVs").responseJSON { response in
+        self.journey.append(Place(location: CLLocation(latitude: 40.729324, longitude: -73.981329), text: "next waypoint!"))
+        
+        Alamofire.request("https://maps.googleapis.com/maps/api/directions/json?mode=walking&origin=40.729324,-73.981329&destination=40.729612,-73.988141&key=AIzaSyBrQyRpA3v1gZCznfUvcjSZFG5r_KnrnVs").responseJSON { response in
             if let JSON = response.result.value {
                 let r = JSON as! NSDictionary
                 for route in r["routes"] as! [NSDictionary] {
                     for leg in route["legs"] as! [NSDictionary] {
                         for step in leg["steps"] as! [NSDictionary] {
                             let end_loc = step["end_location"] as! NSDictionary
-                            self.journey.append(Place(_location: CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
+                            self.journey.append(Place(location: CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
                                                            longitude: end_loc["lng"] as! CLLocationDegrees),
-                                                      _reference: "_reference",
-                                                      _placeName: "Next waypoint!",
-                                                      _address: "_address",
-                                                      _phoneNumber: "_phoneNumber",
-                                                      _website: "_website"))
+                                                      text: "Next waypoint!"))
                         }
                     }
                 }
@@ -55,9 +53,18 @@ class ViewController: UIViewController {
 
     func activateNextLocation() {
         journeyIdx += 1
-        let newPlace = journey[journeyIdx] // Do some bounds checking, etc
-        _mapView.removeAnnotations(_mapView.annotations)
-        _mapView.addAnnotation(newPlace)
+        if journeyIdx >= journey.count {
+            let alert = UIAlertController(title: "This is it!",
+                                          message: "You've reached the end of your journey. Good luck, and God speed.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Peace", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated:true, completion:nil)
+        } else {
+            let newPlace = journey[journeyIdx]
+            _mapView.removeAnnotations(_mapView.annotations)
+            _mapView.addAnnotation(newPlace)
+        }
     }
 }
 
@@ -89,6 +96,7 @@ extension ViewController: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             updatingLocation = true
         }
+        self._mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: false)
     }
     
     func stopLocationManager() {
@@ -99,16 +107,25 @@ extension ViewController: CLLocationManagerDelegate {
         }
     }
     
+    func currWaypoint() -> Place {
+        if journeyIdx < 0 {
+            return journey[0]
+        }
+        return journey[journeyIdx]
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let lastLocation = locations.last!
         currentLocation = lastLocation
         
-        let accuracy:CLLocationAccuracy = lastLocation.horizontalAccuracy
-        if(accuracy < 100.0) {
-            let span:MKCoordinateSpan = MKCoordinateSpanMake(0.14 / 10, 0.14 / 10);
-            let region:MKCoordinateRegion = MKCoordinateRegionMake(lastLocation.coordinate,span)
-            self._mapView.setRegion(region, animated: true)
+        let distToCurr = currentLocation!.distance(from: self.currWaypoint().location)
+        print("Hello: ", distToCurr)
+        
+        // This distance appears to be in meters.
+        if distToCurr < 5 {
+            print("Yay! next waypoint")
+            self.activateNextLocation()
         }
     }
     
@@ -119,22 +136,11 @@ extension ViewController: CLLocationManagerDelegate {
 
 //MARK:
 extension ViewController: MKMapViewDelegate {
-    
-    /*
-    @IBAction func addLoctionAction() {
-        if (currentLocation != nil) {
-            let place = Place(_location: currentLocation!, _reference: "_reference", _placeName: "Nio Nguyen's home", _address: "_address", _phoneNumber: "_phoneNumber", _website: "_website")
-            locations.append(place)
-        }
-        showLocations()
-    }
-    */
-    
     @IBAction func cameraAction () {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
+
         let flipsideViewController = storyBoard.instantiateViewController(withIdentifier: "FlipsideViewController") as! FlipsideViewController
-        flipsideViewController.locations = [journey[journeyIdx]]
+        flipsideViewController.locations = [self.currWaypoint()]
         flipsideViewController.userLocation = _mapView.userLocation
         self.present(flipsideViewController, animated:true, completion:nil)
     }

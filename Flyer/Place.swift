@@ -18,13 +18,13 @@ class Place : NSObject , MKAnnotation {
     var phoneNumber:String! = ""
     var website:String! = ""
     
-    init(_location: CLLocation, _reference: String, _placeName: String, _address: String, _phoneNumber: String, _website: String) {
-        self.location       = _location
-        self.reference      = _reference
-        self.placeName      = _placeName
-        self.address        = _address
-        self.phoneNumber    = _phoneNumber
-        self.website    = _website
+    init(location: CLLocation, text: String) {
+        self.location       = location
+        self.reference      = "_reference"
+        self.placeName      = text
+        self.address        = "_address"
+        self.phoneNumber    = "_phoneNumber"
+        self.website    = "_website"
     }
     
     func infoText() -> String {

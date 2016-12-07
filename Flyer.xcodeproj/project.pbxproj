@@ -24,7 +24,6 @@
 		D58BC03D1B20D610007EDFA3 /* AugmentedRealityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BC0371B20D610007EDFA3 /* AugmentedRealityController.m */; };
 		D58BC03E1B20D610007EDFA3 /* GEOLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = D58BC0391B20D610007EDFA3 /* GEOLocations.m */; };
 		D58BC0401B20F087007EDFA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D58BC03F1B20F087007EDFA3 /* CoreLocation.framework */; };
-		D5AEDF271B2754A400B873BB /* Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AEDF261B2754A400B873BB /* Extends.swift */; };
 		D5D919D21B2721F100657033 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D919D11B2721F100657033 /* Place.swift */; };
 		D5D919D41B27276100657033 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D919D31B27276100657033 /* PlaceAnnotation.swift */; };
 		D5D919D61B27364100657033 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D919D51B27364100657033 /* MarkerView.swift */; };
@@ -82,7 +81,6 @@
 		D58BC0381B20D610007EDFA3 /* GEOLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEOLocations.h; sourceTree = "<group>"; };
 		D58BC0391B20D610007EDFA3 /* GEOLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEOLocations.m; sourceTree = "<group>"; };
 		D58BC03F1B20F087007EDFA3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		D5AEDF261B2754A400B873BB /* Extends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extends.swift; path = ../Extends.swift; sourceTree = "<group>"; };
 		D5D919D11B2721F100657033 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		D5D919D31B27276100657033 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		D5D919D51B27364100657033 /* MarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerView.swift; sourceTree = "<group>"; };
@@ -135,11 +133,10 @@
 		D58BBFDD1B20C4D6007EDFA3 /* Flyer */ = {
 			isa = PBXGroup;
 			children = (
-				D5AEDF261B2754A400B873BB /* Extends.swift */,
 				D5D919D01B2721E100657033 /* Model */,
 				D58BC0291B20D5C2007EDFA3 /* Flyer-Bridging-Header.h */,
-				D58BC0161B20D1F0007EDFA3 /* FlipsideViewController.swift */,
 				D58BBFE01B20C4D6007EDFA3 /* AppDelegate.swift */,
+				D58BC0161B20D1F0007EDFA3 /* FlipsideViewController.swift */,
 				D58BBFE21B20C4D6007EDFA3 /* ViewController.swift */,
 				D58BBFE41B20C4D6007EDFA3 /* Main.storyboard */,
 				D58BBFE71B20C4D6007EDFA3 /* Images.xcassets */,
@@ -316,7 +313,6 @@
 				D58BC03C1B20D610007EDFA3 /* ARKit.m in Sources */,
 				D58BC03E1B20D610007EDFA3 /* GEOLocations.m in Sources */,
 				D58BBFE11B20C4D6007EDFA3 /* AppDelegate.swift in Sources */,
-				D5AEDF271B2754A400B873BB /* Extends.swift in Sources */,
 				D58BC03D1B20D610007EDFA3 /* AugmentedRealityController.m in Sources */,
 				D5D919D21B2721F100657033 /* Place.swift in Sources */,
 			);
