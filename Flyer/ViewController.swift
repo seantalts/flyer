@@ -15,8 +15,8 @@ import Alamofire
 class ViewController: UIViewController {
     var updatingLocation = false
     @IBOutlet weak var _mapView: MKMapView!
-    var locations = [Place]()
-    var journey = [CLLocation]()
+    var journey = [Place]()
+    var journeyIdx = 0
     var currentLocation : CLLocation?
     let locationManager = CLLocationManager()
     
@@ -31,12 +31,18 @@ class ViewController: UIViewController {
                     for leg in route["legs"] as! [NSDictionary] {
                         for step in leg["steps"] as! [NSDictionary] {
                             let end_loc = step["end_location"] as! NSDictionary
-                            self.journey.append(CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
-                                                           longitude: end_loc["lng"] as! CLLocationDegrees))
+                            self.journey.append(Place(_location: CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
+                                                           longitude: end_loc["lng"] as! CLLocationDegrees),
+                                                      _reference: "_reference",
+                                                      _placeName: "Next waypoint!",
+                                                      _address: "_address",
+                                                      _phoneNumber: "_phoneNumber",
+                                                      _website: "_website"))
                         }
                     }
                 }
             }
+            self.activateNextLocation()
         }
     }
     
@@ -47,8 +53,11 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    func showLocations() {
-        _mapView.addAnnotations(locations)
+    func activateNextLocation() {
+        journeyIdx += 1
+        let newPlace = journey[journeyIdx] // Do some bounds checking, etc
+        _mapView.removeAnnotations(_mapView.annotations)
+        _mapView.addAnnotation(newPlace)
     }
 }
 
@@ -125,7 +134,7 @@ extension ViewController: MKMapViewDelegate {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let flipsideViewController = storyBoard.instantiateViewController(withIdentifier: "FlipsideViewController") as! FlipsideViewController
-        flipsideViewController.locations = locations
+        flipsideViewController.locations = [journey[journeyIdx]]
         flipsideViewController.userLocation = _mapView.userLocation
         self.present(flipsideViewController, animated:true, completion:nil)
     }
