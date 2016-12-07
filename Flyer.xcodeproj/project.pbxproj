@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,19 +38,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D58BBFDB1B20C4D6007EDFA3 /* Around Me-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Around Me-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D58BBFDB1B20C4D6007EDFA3 /* Flyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58BBFDF1B20C4D6007EDFA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D58BBFE01B20C4D6007EDFA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58BBFE21B20C4D6007EDFA3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D58BBFE51B20C4D6007EDFA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D58BBFE71B20C4D6007EDFA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D58BBFEA1B20C4D6007EDFA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D58BBFF01B20C4D6007EDFA3 /* Around Me-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Around Me-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D58BBFF01B20C4D6007EDFA3 /* FlyerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlyerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58BBFF51B20C4D6007EDFA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D58BBFF61B20C4D6007EDFA3 /* Around_Me_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Around_Me_SwiftTests.swift; sourceTree = "<group>"; };
 		D58BC0001B20CC94007EDFA3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D58BC0161B20D1F0007EDFA3 /* FlipsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipsideViewController.swift; sourceTree = "<group>"; };
-		D58BC0291B20D5C2007EDFA3 /* Around Me-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Around Me-Swift-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		D58BC0291B20D5C2007EDFA3 /* Flyer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Flyer-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		D58BC02E1B20D610007EDFA3 /* ARCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCoordinate.h; sourceTree = "<group>"; };
 		D58BC02F1B20D610007EDFA3 /* ARCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCoordinate.m; sourceTree = "<group>"; };
 		D58BC0301B20D610007EDFA3 /* ARGeoCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGeoCoordinate.h; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 				D58BC0001B20CC94007EDFA3 /* MapKit.framework */,
 				D58BC03F1B20F087007EDFA3 /* CoreLocation.framework */,
 				D58BC02D1B20D610007EDFA3 /* ARKit */,
-				D58BBFDD1B20C4D6007EDFA3 /* Around Me-Swift */,
+				D58BBFDD1B20C4D6007EDFA3 /* Flyer */,
 				D58BBFF31B20C4D6007EDFA3 /* Around Me-SwiftTests */,
 				D58BBFDC1B20C4D6007EDFA3 /* Products */,
 			);
@@ -105,18 +105,18 @@
 		D58BBFDC1B20C4D6007EDFA3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D58BBFDB1B20C4D6007EDFA3 /* Around Me-Swift.app */,
-				D58BBFF01B20C4D6007EDFA3 /* Around Me-SwiftTests.xctest */,
+				D58BBFDB1B20C4D6007EDFA3 /* Flyer.app */,
+				D58BBFF01B20C4D6007EDFA3 /* FlyerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D58BBFDD1B20C4D6007EDFA3 /* Around Me-Swift */ = {
+		D58BBFDD1B20C4D6007EDFA3 /* Flyer */ = {
 			isa = PBXGroup;
 			children = (
 				D5AEDF261B2754A400B873BB /* Extends.swift */,
 				D5D919D01B2721E100657033 /* Model */,
-				D58BC0291B20D5C2007EDFA3 /* Around Me-Swift-Bridging-Header.h */,
+				D58BC0291B20D5C2007EDFA3 /* Flyer-Bridging-Header.h */,
 				D58BC0161B20D1F0007EDFA3 /* FlipsideViewController.swift */,
 				D58BBFE01B20C4D6007EDFA3 /* AppDelegate.swift */,
 				D58BBFE21B20C4D6007EDFA3 /* ViewController.swift */,
@@ -125,7 +125,7 @@
 				D58BBFE91B20C4D6007EDFA3 /* LaunchScreen.xib */,
 				D58BBFDE1B20C4D6007EDFA3 /* Supporting Files */,
 			);
-			path = "Around Me-Swift";
+			path = Flyer;
 			sourceTree = "<group>";
 		};
 		D58BBFDE1B20C4D6007EDFA3 /* Supporting Files */ = {
@@ -142,7 +142,8 @@
 				D58BBFF61B20C4D6007EDFA3 /* Around_Me_SwiftTests.swift */,
 				D58BBFF41B20C4D6007EDFA3 /* Supporting Files */,
 			);
-			path = "Around Me-SwiftTests";
+			name = "Around Me-SwiftTests";
+			path = FlyerTests;
 			sourceTree = "<group>";
 		};
 		D58BBFF41B20C4D6007EDFA3 /* Supporting Files */ = {
@@ -185,9 +186,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D58BBFDA1B20C4D6007EDFA3 /* Around Me-Swift */ = {
+		D58BBFDA1B20C4D6007EDFA3 /* Flyer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D58BBFFA1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "Around Me-Swift" */;
+			buildConfigurationList = D58BBFFA1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "Flyer" */;
 			buildPhases = (
 				D58BBFD71B20C4D6007EDFA3 /* Sources */,
 				D58BBFD81B20C4D6007EDFA3 /* Frameworks */,
@@ -197,14 +198,14 @@
 			);
 			dependencies = (
 			);
-			name = "Around Me-Swift";
+			name = Flyer;
 			productName = "Around Me-Swift";
-			productReference = D58BBFDB1B20C4D6007EDFA3 /* Around Me-Swift.app */;
+			productReference = D58BBFDB1B20C4D6007EDFA3 /* Flyer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D58BBFEF1B20C4D6007EDFA3 /* Around Me-SwiftTests */ = {
+		D58BBFEF1B20C4D6007EDFA3 /* FlyerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D58BBFFD1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "Around Me-SwiftTests" */;
+			buildConfigurationList = D58BBFFD1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "FlyerTests" */;
 			buildPhases = (
 				D58BBFEC1B20C4D6007EDFA3 /* Sources */,
 				D58BBFED1B20C4D6007EDFA3 /* Frameworks */,
@@ -215,9 +216,9 @@
 			dependencies = (
 				D58BBFF21B20C4D6007EDFA3 /* PBXTargetDependency */,
 			);
-			name = "Around Me-SwiftTests";
+			name = FlyerTests;
 			productName = "Around Me-SwiftTests";
-			productReference = D58BBFF01B20C4D6007EDFA3 /* Around Me-SwiftTests.xctest */;
+			productReference = D58BBFF01B20C4D6007EDFA3 /* FlyerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -227,7 +228,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = tieunun;
+				ORGANIZATIONNAME = Spinner;
 				TargetAttributes = {
 					D58BBFDA1B20C4D6007EDFA3 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -241,8 +242,8 @@
 					};
 				};
 			};
-			buildConfigurationList = D58BBFD61B20C4D6007EDFA3 /* Build configuration list for PBXProject "Around Me-Swift" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = D58BBFD61B20C4D6007EDFA3 /* Build configuration list for PBXProject "Flyer" */;
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -254,8 +255,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D58BBFDA1B20C4D6007EDFA3 /* Around Me-Swift */,
-				D58BBFEF1B20C4D6007EDFA3 /* Around Me-SwiftTests */,
+				D58BBFDA1B20C4D6007EDFA3 /* Flyer */,
+				D58BBFEF1B20C4D6007EDFA3 /* FlyerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -313,7 +314,7 @@
 /* Begin PBXTargetDependency section */
 		D58BBFF21B20C4D6007EDFA3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D58BBFDA1B20C4D6007EDFA3 /* Around Me-Swift */;
+			target = D58BBFDA1B20C4D6007EDFA3 /* Flyer */;
 			targetProxy = D58BBFF11B20C4D6007EDFA3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -431,11 +432,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NMK4J678N9;
-				INFOPLIST_FILE = "Around Me-Swift/Info.plist";
+				INFOPLIST_FILE = Flyer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huynguyen.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spinner.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Around Me-Swift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Flyer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -447,11 +448,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NMK4J678N9;
-				INFOPLIST_FILE = "Around Me-Swift/Info.plist";
+				INFOPLIST_FILE = Flyer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huynguyen.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.spinner.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Around Me-Swift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Flyer-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -473,7 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.huynguyen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Around Me-Swift.app/Around Me-Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flyer.app/Flyer";
 			};
 			name = Debug;
 		};
@@ -490,14 +491,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.huynguyen.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Around Me-Swift.app/Around Me-Swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Flyer.app/Flyer";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D58BBFD61B20C4D6007EDFA3 /* Build configuration list for PBXProject "Around Me-Swift" */ = {
+		D58BBFD61B20C4D6007EDFA3 /* Build configuration list for PBXProject "Flyer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D58BBFF81B20C4D6007EDFA3 /* Debug */,
@@ -506,7 +507,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D58BBFFA1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "Around Me-Swift" */ = {
+		D58BBFFA1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "Flyer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D58BBFFB1B20C4D6007EDFA3 /* Debug */,
@@ -515,7 +516,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D58BBFFD1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "Around Me-SwiftTests" */ = {
+		D58BBFFD1B20C4D6007EDFA3 /* Build configuration list for PBXNativeTarget "FlyerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D58BBFFE1B20C4D6007EDFA3 /* Debug */,

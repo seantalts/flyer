@@ -1,12 +1,3 @@
-//
-//  Location.swift
-//  justShare
-//
-//  Created by Nio Nguyen on 4/22/15.
-//  nio.huynguyen@gmail.com
-//  Copyright (c) 2015 Nio Nguyen. All rights reserved.
-//
-
 import CoreLocation
 import MapKit
 

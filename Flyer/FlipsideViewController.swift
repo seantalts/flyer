@@ -1,12 +1,3 @@
-//
-//  FlipsideViewController.swift
-//  Around Me-Swift
-//
-//  Created by Nio Nguyen on 6/5/15.
-//  nio.huynguyen@gmail.com
-//  Copyright (c) 2015 Nio Nguyen. All rights reserved.
-//
-
 import UIKit
 import MapKit
 class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, ARMarkerDelegate, MarkerViewDelegate {

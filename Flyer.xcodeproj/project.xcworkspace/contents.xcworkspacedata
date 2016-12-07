@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Around Me-Swift.xcodeproj">
+      location = "self:/Users/xitrium/scm/surprise/Flyer.xcodeproj">
    </FileRef>
 </Workspace>
