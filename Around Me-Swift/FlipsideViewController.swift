@@ -29,7 +29,6 @@ class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, 
             _arController!.debugMode = false
         }
         geoLocations()
-
     }
     
     override func didReceiveMemoryWarning() {

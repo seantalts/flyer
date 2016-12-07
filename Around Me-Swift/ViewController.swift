@@ -11,13 +11,37 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    let locationManager = CLLocationManager()
+class ViewController: UIViewController {
     var updatingLocation = false
     @IBOutlet weak var _mapView: MKMapView!
     var locations = [Place]()
     var currentLocation : CLLocation?
+    let locationManager = CLLocationManager()
     
+    func showLocationServicesDeniedAlert() {
+        let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+
+    func randomLocation(_ location:CLLocation, number:Int) {
+        for _ in 1...number {
+            let newLocation = CLLocation(latitude: location.coordinate.latitude + 0.005 * Double.random(min: -1.0, max: 1.0) ,
+                                         longitude: location.coordinate.longitude + 0.005 * Double.random(min: -1.0, max: 1.0))
+            let place = Place(_location: newLocation, _reference: "_reference", _placeName: "Nio Nguyen's home", _address: "_address", _phoneNumber: "_phoneNumber", _website: "_website")
+            locations.append(place)
+        }
+        showLocations()
+    }
+
+    func showLocations() {
+        _mapView.addAnnotations(locations)
+    }
+}
+
+//MARK:
+extension ViewController: CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let authStatus : CLAuthorizationStatus = CLLocationManager.authorizationStatus()
@@ -37,17 +61,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             startLocationManager()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func showLocationServicesDeniedAlert() {
-        let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
     
     func startLocationManager() {
         if CLLocationManager.locationServicesEnabled() {
@@ -66,14 +79,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let lastLocation = locations.last!
         if (currentLocation == nil) {
             randomLocation(lastLocation, number: 10)
         }
         currentLocation = lastLocation
-
+        
         let accuracy:CLLocationAccuracy = lastLocation.horizontalAccuracy
         if(accuracy < 100.0) {
             let span:MKCoordinateSpan = MKCoordinateSpanMake(0.14 / 10, 0.14 / 10);
@@ -85,26 +98,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self._mapView.showsUserLocation = true
     }
-    
-    func randomLocation(_ location:CLLocation, number:Int) {
-        for _ in 1...number {
-            let newLocation = CLLocation(latitude: location.coordinate.latitude + 0.005 * Double.random(min: -1.0, max: 1.0) , longitude: location.coordinate.longitude + 0.005 * Double.random(min: -1.0, max: 1.0))
-            let place = Place(_location: newLocation, _reference: "_reference", _placeName: "Nio Nguyen's home", _address: "_address", _phoneNumber: "_phoneNumber", _website: "_website")
-            locations.append(place)
-        }
-        showLocations()
-    }
+}
 
+//MARK:
+extension ViewController: MKMapViewDelegate {
+    
     @IBAction func addLoctionAction() {
         if (currentLocation != nil) {
             let place = Place(_location: currentLocation!, _reference: "_reference", _placeName: "Nio Nguyen's home", _address: "_address", _phoneNumber: "_phoneNumber", _website: "_website")
             locations.append(place)
         }
         showLocations()
-    }
-    
-    func showLocations() {
-        _mapView.addAnnotations(locations)
     }
     
     @IBAction func cameraAction () {
@@ -116,4 +120,3 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.present(flipsideViewController, animated:true, completion:nil)
     }
 }
-
