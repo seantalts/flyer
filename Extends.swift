@@ -11,7 +11,7 @@ extension Int {
     /**
     Returns a random integer between 0 and n-1.
     */
-    static func random(n: Int) -> Int {
+    static func random(_ n: Int) -> Int {
         return Int(arc4random_uniform(UInt32(n)))
     }
     /**
@@ -20,7 +20,7 @@ extension Int {
     :param: upper number Int
     :return: random number Int
     */
-    static func random(#min: Int, max: Int) -> Int {
+    static func random(min: Int, max: Int) -> Int {
         return Int(arc4random_uniform(UInt32(max - min + 1))) + min
     }
 }
@@ -38,7 +38,7 @@ extension Double {
     :param: upper number Double
     :return: random number Double
     */
-    static func random(#min: Double, max: Double) -> Double {
+    static func random(min: Double, max: Double) -> Double {
         return Double.random() * (max - min) + min
     }
 }
@@ -55,7 +55,7 @@ extension Float {
     :param: upper number Float
     :return: random number Float
     */
-    static func random(#min: Float, max: Float) -> Float {
+    static func random(min: Float, max: Float) -> Float {
         return Float.random() * (max - min) + min
     }
 }
@@ -72,7 +72,7 @@ extension CGFloat {
     :param: upper number CGFloat
     :return: random number CGFloat
     */
-    static func random(#min: CGFloat, max: CGFloat) -> CGFloat {
-        return CGFloat.random() * (max - min) + min
+    static func random(min: CGFloat, max: CGFloat) -> CGFloat {
+        return CGFloat.random() * (max - leastNormalMagnitude) + leastNormalMagnitude
     }
 }

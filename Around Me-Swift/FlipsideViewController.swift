@@ -39,10 +39,10 @@ class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, 
     
     func generateGeoLocations() {        
         for place in locations {
-            var coordinate:ARGeoCoordinate = ARGeoCoordinate(location: place.location, locationTitle: place.placeName)
-            coordinate.calibrateUsingOrigin(userLocation?.location)
+            let coordinate:ARGeoCoordinate = ARGeoCoordinate(location: place.location, locationTitle: place.placeName)
+            coordinate.calibrate(usingOrigin: userLocation?.location)
             
-            var markerView:MarkerView = MarkerView(_coordinate: coordinate, _delegate: self)
+            let markerView:MarkerView = MarkerView(_coordinate: coordinate, _delegate: self)
             coordinate.displayView = markerView
             
             _arController?.addCoordinate(coordinate)
@@ -51,7 +51,7 @@ class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, 
         
     }
     
-    func locationClicked(coordinate:ARGeoCoordinate) {
+    func locationClicked(_ coordinate:ARGeoCoordinate) {
     
     }
     
@@ -67,25 +67,25 @@ class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, 
     func locationClicked() {
     }
     
-    func didUpdateHeading(newHeading:CLHeading){
+    func didUpdate(_ newHeading:CLHeading){
         
     }
-    func didUpdateLocation(newLocation:CLLocation){
+    func didUpdate(_ newLocation:CLLocation){
         
     }
-    func didUpdateOrientation(orientation:UIDeviceOrientation) {
-        
-    }
-    
-    func didTapMarker(coordinate:ARGeoCoordinate) {
+    func didUpdate(_ orientation:UIDeviceOrientation) {
         
     }
     
-    func didTouchMarkerView(markerView:MarkerView) {
+    func didTapMarker(_ coordinate:ARGeoCoordinate) {
+        
+    }
+    
+    func didTouchMarkerView(_ markerView:MarkerView) {
         
     }
     
     @IBAction func doneAction() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

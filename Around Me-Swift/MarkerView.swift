@@ -8,7 +8,7 @@
 //
 
 protocol MarkerViewDelegate {
-    func didTouchMarkerView(markerView:MarkerView)
+    func didTouchMarkerView(_ markerView:MarkerView)
 }
 
 
@@ -28,52 +28,52 @@ class MarkerView : UIView {
     }
     
     init(_coordinate:ARGeoCoordinate, _delegate:MarkerViewDelegate) {
-        let frame = CGRectMake(0, 0, kWidth, kHeight)
+        let frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight)
         super.init(frame: frame)
         
         self.coordinate = _coordinate
         self.delegate = _delegate
         
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
         
-        var titleFrame:CGRect = CGRectMake(0, 0, kWidth, 40.0)
+        let titleFrame:CGRect = CGRect(x: 0, y: 0, width: kWidth, height: 40.0)
         
-        var title:UILabel = UILabel(frame: titleFrame)
+        let title:UILabel = UILabel(frame: titleFrame)
         title.backgroundColor = UIColor(white: 0.3, alpha: 0.7)
-        title.textColor = UIColor.whiteColor()
-        title.textAlignment = NSTextAlignment.Center
+        title.textColor = UIColor.white
+        title.textAlignment = NSTextAlignment.center
         title.text = self.coordinate!.title
         title.sizeToFit()
         
-        var distanceFrame:CGRect = CGRectMake(0, 45.0, kWidth, 40.0)
+        let distanceFrame:CGRect = CGRect(x: 0, y: 45.0, width: kWidth, height: 40.0)
         
         self.distanceLabel = UILabel(frame: distanceFrame)
         self.distanceLabel!.backgroundColor = UIColor(white: 0.3, alpha: 0.7)
-        self.distanceLabel!.textColor = UIColor.whiteColor()
-        self.distanceLabel!.textAlignment = NSTextAlignment.Center
+        self.distanceLabel!.textColor = UIColor.white
+        self.distanceLabel!.textAlignment = NSTextAlignment.center
         self.distanceLabel!.text = String(format: "%.2f", self.coordinate!.distanceFromOrigin / 1000.0) + "km"
         self.distanceLabel!.sizeToFit()
         
         self.addSubview(title)
         self.addSubview(self.distanceLabel!)
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
 
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
 
         self.distanceLabel!.text = String(format: "%.2f", self.coordinate!.distanceFromOrigin / 1000.0) + "km"
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent e: UIEvent) {
+    override func touchesEnded(_ touches: Set<UITouch>, with e: UIEvent?) {
         self.delegate?.didTouchMarkerView(self)
     }
     
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
-        var theFrame = CGRectMake(0, 0, kWidth, kHeight)
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let theFrame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight)
         
-        return CGRectContainsPoint(theFrame, point)
+        return theFrame.contains(point)
     }
 
 }
