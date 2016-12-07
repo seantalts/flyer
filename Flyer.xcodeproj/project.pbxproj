@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79E9D76E1DF8A89E00206D7D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E9D76D1DF8A89E00206D7D /* Alamofire.framework */; };
+		79E9D76F1DF8A9AA00206D7D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E9D76D1DF8A89E00206D7D /* Alamofire.framework */; };
+		79E9D7701DF8A9AA00206D7D /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79E9D76D1DF8A89E00206D7D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D58BBFE11B20C4D6007EDFA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BBFE01B20C4D6007EDFA3 /* AppDelegate.swift */; };
 		D58BBFE31B20C4D6007EDFA3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58BBFE21B20C4D6007EDFA3 /* ViewController.swift */; };
 		D58BBFE61B20C4D6007EDFA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58BBFE41B20C4D6007EDFA3 /* Main.storyboard */; };
@@ -37,7 +40,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		79E9D7711DF8A9AA00206D7D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				79E9D7701DF8A9AA00206D7D /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		79E9D76D1DF8A89E00206D7D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D58BBFDB1B20C4D6007EDFA3 /* Flyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58BBFDF1B20C4D6007EDFA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D58BBFE01B20C4D6007EDFA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +94,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58BC0401B20F087007EDFA3 /* CoreLocation.framework in Frameworks */,
+				79E9D76E1DF8A89E00206D7D /* Alamofire.framework in Frameworks */,
 				D58BC0011B20CC94007EDFA3 /* MapKit.framework in Frameworks */,
+				79E9D76F1DF8A9AA00206D7D /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,11 +113,12 @@
 		D58BBFD21B20C4D6007EDFA3 = {
 			isa = PBXGroup;
 			children = (
+				79E9D76D1DF8A89E00206D7D /* Alamofire.framework */,
 				D58BC0001B20CC94007EDFA3 /* MapKit.framework */,
 				D58BC03F1B20F087007EDFA3 /* CoreLocation.framework */,
 				D58BC02D1B20D610007EDFA3 /* ARKit */,
 				D58BBFDD1B20C4D6007EDFA3 /* Flyer */,
-				D58BBFF31B20C4D6007EDFA3 /* Around Me-SwiftTests */,
+				D58BBFF31B20C4D6007EDFA3 /* FlyerTests */,
 				D58BBFDC1B20C4D6007EDFA3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,13 +157,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D58BBFF31B20C4D6007EDFA3 /* Around Me-SwiftTests */ = {
+		D58BBFF31B20C4D6007EDFA3 /* FlyerTests */ = {
 			isa = PBXGroup;
 			children = (
 				D58BBFF61B20C4D6007EDFA3 /* Around_Me_SwiftTests.swift */,
 				D58BBFF41B20C4D6007EDFA3 /* Supporting Files */,
 			);
-			name = "Around Me-SwiftTests";
 			path = FlyerTests;
 			sourceTree = "<group>";
 		};
@@ -193,6 +213,7 @@
 				D58BBFD71B20C4D6007EDFA3 /* Sources */,
 				D58BBFD81B20C4D6007EDFA3 /* Frameworks */,
 				D58BBFD91B20C4D6007EDFA3 /* Resources */,
+				79E9D7711DF8A9AA00206D7D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -432,6 +453,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NMK4J678N9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Flyer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spinner.$(PRODUCT_NAME:rfc1034identifier)";
@@ -448,6 +473,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NMK4J678N9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Flyer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spinner.$(PRODUCT_NAME:rfc1034identifier)";

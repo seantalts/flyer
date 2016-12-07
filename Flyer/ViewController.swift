@@ -10,29 +10,41 @@
 import UIKit
 import CoreLocation
 import MapKit
+import Alamofire
 
 class ViewController: UIViewController {
     var updatingLocation = false
     @IBOutlet weak var _mapView: MKMapView!
     var locations = [Place]()
+    var journey = [CLLocation]()
     var currentLocation : CLLocation?
     let locationManager = CLLocationManager()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupLocation()
+        
+        Alamofire.request("https://maps.googleapis.com/maps/api/directions/json?mode=walking&origin=40.775535,-73.961310&destination=40.729612,-73.988141&waypoints=via:40.729324,-73.981329&key=AIzaSyBrQyRpA3v1gZCznfUvcjSZFG5r_KnrnVs").responseJSON { response in
+            if let JSON = response.result.value {
+                let r = JSON as! NSDictionary
+                for route in r["routes"] as! [NSDictionary] {
+                    for leg in route["legs"] as! [NSDictionary] {
+                        for step in leg["steps"] as! [NSDictionary] {
+                            let end_loc = step["end_location"] as! NSDictionary
+                            self.journey.append(CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
+                                                           longitude: end_loc["lng"] as! CLLocationDegrees))
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     func showLocationServicesDeniedAlert() {
         let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable location services for this app in Settings.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
-    }
-
-    func randomLocation(_ location:CLLocation, number:Int) {
-        for _ in 1...number {
-            let newLocation = CLLocation(latitude: location.coordinate.latitude + 0.005 * Double.random(min: -1.0, max: 1.0) ,
-                                         longitude: location.coordinate.longitude + 0.005 * Double.random(min: -1.0, max: 1.0))
-            let place = Place(_location: newLocation, _reference: "_reference", _placeName: "Nio Nguyen's home", _address: "_address", _phoneNumber: "_phoneNumber", _website: "_website")
-            locations.append(place)
-        }
-        showLocations()
     }
 
     func showLocations() {
@@ -42,8 +54,7 @@ class ViewController: UIViewController {
 
 //MARK:
 extension ViewController: CLLocationManagerDelegate {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func setupLocation() {
         let authStatus : CLAuthorizationStatus = CLLocationManager.authorizationStatus()
         if authStatus == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
@@ -82,9 +93,6 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let lastLocation = locations.last!
-        if (currentLocation == nil) {
-            randomLocation(lastLocation, number: 10)
-        }
         currentLocation = lastLocation
         
         let accuracy:CLLocationAccuracy = lastLocation.horizontalAccuracy
@@ -103,6 +111,7 @@ extension ViewController: CLLocationManagerDelegate {
 //MARK:
 extension ViewController: MKMapViewDelegate {
     
+    /*
     @IBAction func addLoctionAction() {
         if (currentLocation != nil) {
             let place = Place(_location: currentLocation!, _reference: "_reference", _placeName: "Nio Nguyen's home", _address: "_address", _phoneNumber: "_phoneNumber", _website: "_website")
@@ -110,6 +119,7 @@ extension ViewController: MKMapViewDelegate {
         }
         showLocations()
     }
+    */
     
     @IBAction func cameraAction () {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)

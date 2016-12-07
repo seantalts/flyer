@@ -1,12 +1,3 @@
-//
-//  MarkerView.swift
-//  Around Me-Swift
-//
-//  Created by Nio Nguyen on 6/9/15.
-//  nio.huynguyen@gmail.com
-//  Copyright (c) 2015 Nio Nguyen. All rights reserved.
-//
-
 protocol MarkerViewDelegate {
     func didTouchMarkerView(_ markerView:MarkerView)
 }
