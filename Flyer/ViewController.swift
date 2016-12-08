@@ -29,6 +29,8 @@ class ViewController: UIViewController {
     
     private func populateJourney(url: String) {
         self.journey = []
+        
+        var waypoint = 0
         Alamofire.request(url).responseJSON { response in
             if let JSON = response.result.value {
                 let r = JSON as! NSDictionary
@@ -36,9 +38,10 @@ class ViewController: UIViewController {
                     for leg in route["legs"] as! [NSDictionary] {
                         for step in leg["steps"] as! [NSDictionary] {
                             let end_loc = step["end_location"] as! NSDictionary
+                            waypoint += 1
                             self.journey.append(Place(location: CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
                                                                            longitude: end_loc["lng"] as! CLLocationDegrees),
-                                                      text: "Next waypoint!"))
+                                                      text: "waypoint \(waypoint)!"))
                         }
                     }
                 }
@@ -65,7 +68,7 @@ class ViewController: UIViewController {
             targets.append(newPlace)
         }
     }
-}
+} 
 
 //MARK:
 extension ViewController: CLLocationManagerDelegate {

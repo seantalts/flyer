@@ -21,7 +21,7 @@ class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, 
         }
         geoLocations()
     }
-
+    
     func generateGeoLocations() {        
         for place in locations {
             let coordinate:ARGeoCoordinate = ARGeoCoordinate(location: place.location, locationTitle: place.placeName)
@@ -33,11 +33,9 @@ class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, 
             _arController?.addCoordinate(coordinate)
             geoLocationsArray.append(coordinate)
         }
-        
     }
     
     func locationClicked(_ coordinate:ARGeoCoordinate) {
-    
     }
     
     func geoLocations() -> NSMutableArray{
