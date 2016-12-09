@@ -61,11 +61,11 @@ class ViewController: UIViewController {
             alert.addAction(okAction)
             present(alert, animated:true, completion:nil)
         } else {
-            let newPlace = journey[journeyIdx]
-            _mapView.removeAnnotations(_mapView.annotations)
-            _mapView.addAnnotation(newPlace)
             targets.removeAll()
-            targets.append(newPlace)
+            targets.append(journey[journeyIdx])
+            _mapView.removeAnnotations(_mapView.annotations)
+            _mapView.addAnnotation(targets[0])
+
         }
     }
 } 
@@ -110,8 +110,8 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func currWaypoint() -> Place? {
-        if journeyIdx >= 0 && journeyIdx < journey.count {
-            return journey[journeyIdx]
+        if targets.count > 0 {
+            return targets[0]
         }
         return nil
     }
@@ -120,6 +120,7 @@ extension ViewController: CLLocationManagerDelegate {
         
         let lastLocation = locations.last!
         currentLocation = lastLocation
+        
         if let targetLocation = self.currWaypoint().map({wp in wp.location!}) {
             let distToCurr = currentLocation!.distance(from: targetLocation)
             print("Distance", distToCurr)

@@ -19,7 +19,7 @@ class FlipsideViewController: UIViewController, ARLocationDelegate, ARDelegate, 
             _arController!.rotateViewsBasedOnPerspective = true
             _arController!.debugMode = false
         }
-        geoLocations()
+        let _ = geoLocations()
     }
     
     func generateGeoLocations() {        
