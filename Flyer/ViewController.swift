@@ -24,14 +24,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLocation()
-        self.populateJourney(url: "https://maps.googleapis.com/maps/api/directions/json?mode=walking&origin=40.729324,-73.981329&destination=40.729612,-73.988141&key=AIzaSyBrQyRpA3v1gZCznfUvcjSZFG5r_KnrnVs")
+        self.populateJourney(url: "https://maps.googleapis.com/maps/api/directions/json?mode=walking&origin=37.777523,-122.455289&waypoints=via:37.777548,-122.459661|via:37.783068,-122.460241&destination=37.782655,-122.464367&key=AIzaSyBrQyRpA3v1gZCznfUvcjSZFG5r_KnrnVs")
     }
     
     private func populateJourney(url: String) {
         self.journey = []
         
         var waypoint = 0
-        Alamofire.request(url).responseJSON { response in
+        let escapedUrl = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
+        Alamofire.request(escapedUrl).responseJSON { response in
             if let JSON = response.result.value {
                 let r = JSON as! NSDictionary
                 for route in r["routes"] as! [NSDictionary] {
@@ -39,13 +40,15 @@ class ViewController: UIViewController {
                         for step in leg["steps"] as! [NSDictionary] {
                             let end_loc = step["end_location"] as! NSDictionary
                             waypoint += 1
-                            self.journey.append(Place(location: CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
-                                                                           longitude: end_loc["lng"] as! CLLocationDegrees),
-                                                      text: "waypoint \(waypoint)!"))
+                            self.journey.append(
+                                Place(location: CLLocation(latitude: end_loc["lat"] as! CLLocationDegrees,
+                                                           longitude: end_loc["lng"] as! CLLocationDegrees),
+                                      text: "waypoint \(waypoint)!"))
                         }
                     }
                 }
             }
+            print("Journey: \(self.journey)")
             self.activateNextLocation()
         }
     }
